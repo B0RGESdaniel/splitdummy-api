@@ -5,7 +5,10 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "dev": "node --env-file .env --watch src/server.ts"
+    "dev": "node --env-file .env --watch src/server.ts",
+    "db:generate": "drizzle-kit generate",
+    "db:migrate": "drizzle-kit migrate",
+    "db:studio": "drizzle-kit studio"
   },
   "keywords": [],
   "author": "",
@@ -13,12 +16,15 @@
   "dependencies": {
     "@fastify/swagger": "^9.5.1",
     "@scalar/fastify-api-reference": "^1.35.6",
+    "drizzle-orm": "^0.44.5",
     "fastify": "^5.6.0",
     "fastify-type-provider-zod": "^6.0.0",
+    "pg": "^8.16.3",
     "zod": "^4.1.9"
   },
   "devDependencies": {
     "@types/node": "^24.5.2",
+    "drizzle-kit": "^0.31.4",
     "typescript": "^5.9.2"
   }
 }
