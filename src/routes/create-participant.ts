@@ -16,7 +16,7 @@ export const createParticipantRoute: FastifyPluginAsyncZod = async (server) => {
         }),
         response: {
           201: z
-            .object({ partId: z.uuid() })
+            .object({ participantId: z.uuid() })
             .describe("Participant created successfully"),
         },
       },
@@ -32,7 +32,7 @@ export const createParticipantRoute: FastifyPluginAsyncZod = async (server) => {
         })
         .returning();
 
-      return reply.status(201).send({ partId: result[0].id });
+      return reply.status(201).send({ participantId: result[0].id });
     }
   );
 };

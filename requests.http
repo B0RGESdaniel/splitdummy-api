@@ -8,3 +8,60 @@ Content-Type: application/json
   "email": "dlopesborges@gmail.com",
   "googleId": "123456"
 }
+
+###
+
+POST {{baseUrl}}/tabs
+Content-Type: application/json
+
+{
+  "ownerId": "e2cf6781-aa6c-425c-ab45-97ca5930cab0",
+  "title": "conta 14-07-2025"
+}
+
+###
+
+POST {{baseUrl}}/items
+Content-Type: application/json
+
+{
+  "tabId": "d8000164-2a63-4f8b-9ab3-002351af79f4",
+  "description": "coca lata",
+  "unitPrice": "8.00",
+  "quantity": 1,
+  "createdBy": "Daniel Borges"
+}
+
+###
+
+GET {{baseUrl}}/tabs/d8000164-2a63-4f8b-9ab3-002351af79f4/items
+
+###
+
+POST {{baseUrl}}/participants
+Content-Type: application/json
+
+{
+  "tabId": "d8000164-2a63-4f8b-9ab3-002351af79f4",
+  "name": "Edmar Marinho"
+}
+
+###
+
+GET {{baseUrl}}/tabs/d8000164-2a63-4f8b-9ab3-002351af79f4/participants
+
+###
+
+POST {{baseUrl}}/parts
+Content-Type: application/json
+
+{
+  "itemId": "0314bd7e-8e26-42aa-a0ae-373c15b416d5",
+  "partsCount": 1,
+  "participantId": "62476f03-d280-4d8a-bd12-4d55a686a18a",
+  "tabId": "d8000164-2a63-4f8b-9ab3-002351af79f4"
+}
+
+###
+
+GET {{baseUrl}}/items/0314bd7e-8e26-42aa-a0ae-373c15b416d5/parts

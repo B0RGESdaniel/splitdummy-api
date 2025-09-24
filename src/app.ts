@@ -12,6 +12,9 @@ import { createItemRoute } from "./routes/create-item.ts";
 import { createTabRoute } from "./routes/create-tab.ts";
 import { createParticipantRoute } from "./routes/create-participant.ts";
 import { createPartRoute } from "./routes/create-part.ts";
+import { getItemsByTabIdRoute } from "./routes/get-items-by-tab-id.ts";
+import { getParticpantsByTabIdRoute } from "./routes/get-participants-by-tab-id.ts";
+import { getPartsByItemIdRoute } from "./routes/get-parts-by-item-id.ts";
 
 const server = fastify().withTypeProvider<ZodTypeProvider>();
 
@@ -39,5 +42,9 @@ server.register(createItemRoute);
 server.register(createTabRoute);
 server.register(createParticipantRoute);
 server.register(createPartRoute);
+
+server.register(getItemsByTabIdRoute);
+server.register(getParticpantsByTabIdRoute);
+server.register(getPartsByItemIdRoute);
 
 export { server };
