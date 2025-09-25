@@ -22,7 +22,6 @@ export const getItemsByTabIdRoute: FastifyPluginAsyncZod = async (server) => {
                 description: z.string(),
                 unitPrice: z.string(),
                 quantity: z.int(),
-                createdBy: z.string(),
               })
             ),
           }),

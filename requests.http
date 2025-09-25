@@ -15,7 +15,7 @@ POST {{baseUrl}}/tabs
 Content-Type: application/json
 
 {
-  "ownerId": "e2cf6781-aa6c-425c-ab45-97ca5930cab0",
+  "ownerId": "7f8506d1-55f9-4e24-9915-6d00a11f9d77",
   "title": "conta 14-07-2025"
 }
 
@@ -42,13 +42,13 @@ POST {{baseUrl}}/participants
 Content-Type: application/json
 
 {
-  "tabId": "d8000164-2a63-4f8b-9ab3-002351af79f4",
+  "tabId": "f11310c4-c856-458b-9ae8-00b8268b0f29",
   "name": "Edmar Marinho"
 }
 
 ###
 
-GET {{baseUrl}}/tabs/d8000164-2a63-4f8b-9ab3-002351af79f4/participants
+GET {{baseUrl}}/tabs/f11310c4-c856-458b-9ae8-00b8268b0f29/participants
 
 ###
 

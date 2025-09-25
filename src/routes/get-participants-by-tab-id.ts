@@ -2,7 +2,7 @@ import type { FastifyPluginAsyncZod } from "fastify-type-provider-zod";
 import z from "zod";
 import { db } from "../database/client.ts";
 import { participants } from "../database/schema.ts";
-import { eq } from "drizzle-orm";
+import { eq, sql } from "drizzle-orm";
 
 export const getParticpantsByTabIdRoute: FastifyPluginAsyncZod = async (
   server
@@ -22,6 +22,7 @@ export const getParticpantsByTabIdRoute: FastifyPluginAsyncZod = async (
               z.object({
                 id: z.uuid(),
                 name: z.string(),
+                isOwner: z.boolean(),
               })
             ),
           }),
@@ -36,6 +37,7 @@ export const getParticpantsByTabIdRoute: FastifyPluginAsyncZod = async (
         .select({
           id: participants.id,
           name: participants.name,
+          isOwner: sql<boolean>`${participants.userId} IS NOT NULL`,
         })
         .from(participants)
         .where(eq(participants.tabId, tabId));

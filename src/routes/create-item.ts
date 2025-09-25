@@ -14,7 +14,6 @@ export const createItemRoute: FastifyPluginAsyncZod = async (server) => {
           description: z.string(),
           unitPrice: z.string(),
           quantity: z.int().min(1, "Must have at least one item"),
-          createdBy: z.string(),
           tabId: z.uuid(),
         }),
         response: {
@@ -25,15 +24,13 @@ export const createItemRoute: FastifyPluginAsyncZod = async (server) => {
       },
     },
     async (request, reply) => {
-      const { description, unitPrice, quantity, createdBy, tabId } =
-        request.body;
+      const { description, unitPrice, quantity, tabId } = request.body;
 
       const result = await db
         .insert(items)
         .values({
           description,
           unitPrice,
-          createdBy,
           quantity,
           tabId,
         })
