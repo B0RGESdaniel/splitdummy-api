@@ -35,6 +35,7 @@ export const tabs = pgTable(
     title: text().notNull(),
     isClosed: boolean().default(false),
     createdAt: timestamp().defaultNow().notNull(),
+    serviceCharge: integer().notNull().default(10),
     closedAt: timestamp(),
   },
   (t) => [uniqueIndex("tabs_ownerid").on(t.ownerId)]
@@ -45,10 +46,10 @@ export const participants = pgTable(
   {
     id: uuid().primaryKey().defaultRandom(),
     name: text().notNull(),
+    userId: uuid().references(() => users.id),
     tabId: uuid()
       .notNull()
       .references(() => tabs.id),
-    createdAt: timestamp().defaultNow().notNull(),
   },
   (t) => [
     uniqueIndex("participants_tabid_name").on(t.tabId, t.name),
@@ -66,8 +67,6 @@ export const items = pgTable(
       .notNull()
       .references(() => tabs.id),
     quantity: integer().notNull().default(1),
-    createdBy: text().notNull(),
-    createdAt: timestamp().defaultNow().notNull(),
   },
   (t) => [index("items_tabid").on(t.tabId)]
 );

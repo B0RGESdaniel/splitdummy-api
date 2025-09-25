@@ -1,5 +1,5 @@
 {
-  "id": "fb805723-788c-4a37-aee5-32c22f58285b",
+  "id": "93f1f55a-f1b4-4488-b1ac-be8c2ebfbf3a",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
@@ -39,19 +39,6 @@
           "primaryKey": false,
           "notNull": true,
           "default": 1
-        },
-        "createdBy": {
-          "name": "createdBy",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "createdAt": {
-          "name": "createdAt",
-          "type": "timestamp",
-          "primaryKey": false,
-          "notNull": true,
-          "default": "now()"
         }
       },
       "indexes": {
@@ -109,18 +96,17 @@
           "primaryKey": false,
           "notNull": true
         },
+        "userId": {
+          "name": "userId",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        },
         "tabId": {
           "name": "tabId",
           "type": "uuid",
           "primaryKey": false,
           "notNull": true
-        },
-        "createdAt": {
-          "name": "createdAt",
-          "type": "timestamp",
-          "primaryKey": false,
-          "notNull": true,
-          "default": "now()"
         }
       },
       "indexes": {
@@ -162,6 +148,19 @@
         }
       },
       "foreignKeys": {
+        "participants_userId_users_id_fk": {
+          "name": "participants_userId_users_id_fk",
+          "tableFrom": "participants",
+          "tableTo": "users",
+          "columnsFrom": [
+            "userId"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
         "participants_tabId_tabs_id_fk": {
           "name": "participants_tabId_tabs_id_fk",
           "tableFrom": "participants",
@@ -371,6 +370,13 @@
           "notNull": true,
           "default": "now()"
         },
+        "serviceCharge": {
+          "name": "serviceCharge",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "default": 10
+        },
         "closedAt": {
           "name": "closedAt",
           "type": "timestamp",
@@ -487,7 +493,15 @@
       },
       "foreignKeys": {},
       "compositePrimaryKeys": {},
-      "uniqueConstraints": {},
+      "uniqueConstraints": {
+        "users_email_unique": {
+          "name": "users_email_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "email"
+          ]
+        }
+      },
       "policies": {},
       "checkConstraints": {},
       "isRLSEnabled": false
