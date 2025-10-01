@@ -1,6 +1,6 @@
 import type { FastifyPluginAsyncZod } from "fastify-type-provider-zod";
-import { db } from "../database/client.ts";
-import { users } from "../database/schema.ts";
+import { db } from "../../database/postgres/client.ts";
+import { users } from "../../database/postgres/schema.ts";
 import z from "zod";
 
 export const createUserRoute: FastifyPluginAsyncZod = async (server) => {

@@ -1,6 +1,6 @@
 import type { FastifyPluginAsyncZod } from "fastify-type-provider-zod";
-import { db } from "../database/client.ts";
-import { participants, tabs, users } from "../database/schema.ts";
+import { db } from "../../database/postgres/client.ts";
+import { participants, tabs, users } from "../../database/postgres/schema.ts";
 import z from "zod";
 import { eq } from "drizzle-orm";
 

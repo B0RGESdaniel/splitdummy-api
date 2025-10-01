@@ -14,6 +14,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@duckdb/node-api": "^1.4.0-r.1",
     "@fastify/swagger": "^9.5.1",
     "@scalar/fastify-api-reference": "^1.35.6",
     "drizzle-orm": "^0.44.5",
@@ -24,6 +25,7 @@
   },
   "devDependencies": {
     "@types/node": "^24.5.2",
+    "@types/pg": "^8.15.5",
     "drizzle-kit": "^0.31.4",
     "typescript": "^5.9.2"
   }

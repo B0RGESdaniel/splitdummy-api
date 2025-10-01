@@ -31,7 +31,7 @@ export const tabs = pgTable(
     id: uuid().primaryKey().defaultRandom(),
     ownerId: uuid("owner_id")
       .notNull()
-      .references(() => users.id),
+      .references(() => users.id, { onDelete: "cascade" }),
     title: text().notNull(),
     isClosed: boolean("is_closed").default(false),
     createdAt: timestamp("created_at").defaultNow().notNull(),
@@ -49,7 +49,7 @@ export const participants = pgTable(
     userId: uuid("user_id").references(() => users.id),
     tabId: uuid()
       .notNull()
-      .references(() => tabs.id),
+      .references(() => tabs.id, { onDelete: "cascade" }),
   },
   (t) => [
     uniqueIndex("participants_tab_id_name").on(t.tabId, t.name),
@@ -66,7 +66,7 @@ export const items = pgTable(
     unitPrice: numeric("unit_price", { precision: 5, scale: 2 }).notNull(),
     tabId: uuid("tab_id")
       .notNull()
-      .references(() => tabs.id),
+      .references(() => tabs.id, { onDelete: "cascade" }),
     quantity: integer().notNull().default(1),
   },
   (t) => [index("items_tab_id").on(t.tabId)]
@@ -78,13 +78,13 @@ export const parts = pgTable(
     id: uuid().primaryKey().defaultRandom(),
     tabId: uuid("tab_id")
       .notNull()
-      .references(() => tabs.id),
+      .references(() => tabs.id, { onDelete: "cascade" }),
     participantId: uuid("participant_id")
       .notNull()
-      .references(() => participants.id),
+      .references(() => participants.id, { onDelete: "cascade" }),
     itemId: uuid("item_id")
       .notNull()
-      .references(() => items.id),
+      .references(() => items.id, { onDelete: "cascade" }),
     partsCount: integer("parts_count").notNull().default(0),
   },
   (t) => [

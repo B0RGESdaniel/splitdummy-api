@@ -65,3 +65,26 @@ Content-Type: application/json
 ###
 
 GET {{baseUrl}}/items/0314bd7e-8e26-42aa-a0ae-373c15b416d5/parts
+
+###
+
+POST {{baseUrl}}/items/delta
+Content-Type: application/json
+
+{
+  "tabId": "2283b4b4-365b-4dc4-a240-73702d594b3f",
+  "itemId": "34bc235f-7764-404a-a604-caaa3a3443d0",
+  "delta": -1
+}
+
+###
+
+POST {{baseUrl}}/parts/delta
+Content-Type: application/json
+
+{
+  "tabId": "2283b4b4-365b-4dc4-a240-73702d594b3f",
+  "participantId": "62476f03-d280-4d8a-bd12-4d55a686a18a",
+  "itemId": "34bc235f-7764-404a-a604-caaa3a3443d0",
+  "delta": -1
+}

@@ -1,7 +1,7 @@
 import type { FastifyPluginAsyncZod } from "fastify-type-provider-zod";
 import z from "zod";
-import { db } from "../database/client.ts";
-import { parts, participants } from "../database/schema.ts";
+import { db } from "../../database/postgres/client.ts";
+import { parts, participants } from "../../database/postgres/schema.ts";
 import { eq } from "drizzle-orm";
 
 export const getPartsByItemIdRoute: FastifyPluginAsyncZod = async (server) => {
